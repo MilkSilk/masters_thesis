@@ -12,3 +12,4 @@ Ideas for projects:
 - Regression and clustering with RL
 - Clustering with varied feature weights. Check if exists within unsipervised learning, implent both in unsupervised and in RL?
 - Game balancing with AI/ML. Idea - build a simple "skirmish" game and balance it with AI. Tweaking game params based on performance.
+- Solve "Upgraded tic-tac-toe": https://youtu.be/bxXH5Q4ZUAw
