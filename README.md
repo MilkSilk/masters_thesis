@@ -1,8 +1,10 @@
-## masters_thesis
+# masters_thesis
 
 Repository including all of the mini-project's that will be a part of my master's thesis. The idea is to find unusual AI/ML applications and implement them. The collective of this work will later be summarised in my Master's Thesis
 
-###
+Each project contains its own README.md, to learn about each project go to a proper directory and read about it there
+
+##
 Ideas for projects:
 
 - Solving monopoly with RL
@@ -11,5 +13,5 @@ Ideas for projects:
 - Facial features recognition, eye color with k-means, age etc. TODO: find dataset.
 - Regression and clustering with RL
 - Clustering with varied feature weights. Check if exists within unsipervised learning, implent both in unsupervised and in RL?
-- Game balancing with AI/ML. Idea - build a simple "skirmish" game and balance it with AI. Tweaking game params based on performance.
+- Game balancing with AI/ML. Idea - build a simple "skirmish" game and balance it with AI. Tweaking game params based on performance. (IN PROGRESS)
 - Solve "Upgraded tic-tac-toe": https://youtu.be/bxXH5Q4ZUAw
