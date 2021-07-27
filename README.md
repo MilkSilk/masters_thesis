@@ -4,8 +4,7 @@ Repository including all of the mini-project's that will be a part of my master'
 
 Each project contains its own README.md, to learn about each project go to a proper directory and read about it there
 
-##
-Ideas for projects:
+## Ideas for projects:
 
 - Solving monopoly with RL
 - Sorting an array with ML [ADA sort paper](https://www.researchgate.net/publication/305362015_AdaSort_Adaptive_Sorting_using_Machine_Learning), [So called "ML Sort"](https://arxiv.org/abs/1805.04272)
