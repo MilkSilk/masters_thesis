@@ -12,5 +12,5 @@ Each project contains its own README.md, to learn about each project go to a pro
 - Facial features recognition, eye color with k-means, age etc. TODO: find dataset.
 - Regression and clustering with RL
 - Clustering with varied feature weights. Check if exists within unsipervised learning, implent both in unsupervised and in RL?
-- Game balancing with AI/ML. Idea - build a simple "skirmish" game and balance it with AI. Tweaking game params based on performance. (IN PROGRESS)
+- **Game balancing with AI/ML. Idea - build a simple "skirmish" game and balance it with AI. Tweaking game params based on performance. (IN PROGRESS)**
 - Solve "Upgraded tic-tac-toe": https://youtu.be/bxXH5Q4ZUAw
