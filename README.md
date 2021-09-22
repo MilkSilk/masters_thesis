@@ -16,4 +16,4 @@ Each project contains its own README.md, to learn about each project go to a pro
 - Solve "Upgraded tic-tac-toe": https://youtu.be/bxXH5Q4ZUAw
 - Do something similar to [Noncom exploit from 2b2t](https://github.com/nerdsinspace/nocom-explanation/blob/main/README.md)
 - Enriching datasets with handmade examples based on domain knowledge. It's a way of introducing a priori knowledge to models. For example if we know that low income means someone is less likely to have a good credit score we include observations that follow this. Or in RL if we're certain that for a certain state we want a given action we create a number of identical observations indicating that, similarly to bootstrapping with immitation learning
-
+- Reccomendation system based on RL (music with length of track played as reward)
