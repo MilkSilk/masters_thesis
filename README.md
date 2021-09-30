@@ -4,6 +4,8 @@ Repository including all of the mini-project's that will be a part of my master'
 
 Each project contains its own README.md, to learn about each project go to a proper directory and read about it there
 
+Main thesis idea: Reinforcement learning is widely researched yet very little business applications exist. Various project presented in the thesis serve as a way of exploring the possiblities of well known ML algorithms with the idea of discovering new business applications for RL and whole of ML.
+
 ## Ideas for projects:
 
 - Solving monopoly with RL
