@@ -22,3 +22,4 @@ Main thesis idea: Reinforcement learning is widely researched yet very little bu
 
 ## Inspirations:
 https://bdtechtalks.com/2021/10/04/ea-reinforcement-learning-game-testing/
+https://arxiv.org/abs/2106.12142 - new imitation learning SOTA algorithm - IQ-learning
