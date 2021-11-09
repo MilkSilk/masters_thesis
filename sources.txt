@@ -1,0 +1,4 @@
+AI for game balance:
+  -https://link.springer.com/chapter/10.1007/978-3-319-52920-2_3
+  -https://ieeexplore.ieee.org/abstract/document/5035625
+  -https://www.aaai.org/Papers/Workshops/2007/WS-07-01/WS07-01-002.pdf
