@@ -20,6 +20,7 @@ Main thesis idea: Reinforcement learning is widely researched yet very little bu
 - Enriching datasets with handmade examples based on domain knowledge. It's a way of introducing a priori knowledge to models. For example if we know that low income means someone is less likely to have a good credit score we include observations that follow this. Or in RL if we're certain that for a certain state we want a given action we create a number of identical observations indicating that, similarly to bootstrapping with immitation learning
 - Reccomendation system based on RL (music with length of track played as reward)
 - Problem: We have a stream of items, which are packaged into 10-item boxes. Each box has to be of certain weight at a minimum. We don't know all of the items in advance, we can stash up to 20 items aside to better bundle the items (disposing of items is possible). Aim: package up as many boxes as possible. Try to solve with RL?
+- Random neural networks for hashing/encrytpion?
 
 ## Inspirations:
 https://bdtechtalks.com/2021/10/04/ea-reinforcement-learning-game-testing/
