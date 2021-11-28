@@ -7,10 +7,9 @@ Apart from demonstrating the above, a number of approaches will
 be presented to illustrate how the algorithms one would expect the
 least can also serve as a tool for game balancing.
 
-The code bases upon [Hunt: Showdown](https://www.huntshowdown.com/)
-The only elements that will be inspired are: weapons, core mechanics
-like gunfight, consumable items' utilization, 
-tools available in-game. The gameplay details will be
+The code loosely bases upon [Hunt: Showdown](https://www.huntshowdown.com/)
+The only elements that will be inspired are: weapons, gunfight mechanics and 
+NPC enemies (zombies, dogs, etc.). The gameplay fine details will be
 omitted as this project's aim isn't to create a playable game but
 instead show how AI can serve to balance a game.
 
@@ -18,15 +17,15 @@ The choice of this game isn't accidental as the author has experience
 with it and follows the development of this game closely. The specifics
 of how the developers at Crytek choose to balance the game are
 multifaceted and go beyond what will be presented here.
-This project aims to change the weapon, tools and consumables
-parameters, where in real game additional balance mechanisms are at 
-play such as: item price, audio cues, item unlock system etc.
+This project aims to change the weapon parameters,
+where in real game additional balance mechanisms are at 
+play such as: item price, audio cues, item unlock system, weapons difficulty
+to learn and difficulty to master etc.
 
 ## Code logic
 
 The environment.py file contains code relevant to the game. It enables
-to simulate duels between player groups, preparation of a player
-for a game, weapon used by players for fighting others and similar.
+to simulate duels between two players.
 
 In the AI module (/ai directory) a number of files can be found,
 each of them employs a different strategy to balancing the game.
