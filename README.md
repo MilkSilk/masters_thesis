@@ -26,3 +26,6 @@ Main thesis idea: Reinforcement learning is widely researched yet very little bu
 https://bdtechtalks.com/2021/10/04/ea-reinforcement-learning-game-testing/
 https://arxiv.org/abs/2106.12142 - new imitation learning SOTA algorithm - IQ-learning
 https://towardsdatascience.com/generative-adversarial-imitation-learning-advantages-limits-7c87fc67e42d - about GAIL, which is beaten by IQ-learning
+
+## Other:
+Use https://www.jetbrains.com/help/pycharm/class-diagram.html for code structure visualization
