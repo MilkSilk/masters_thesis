@@ -3,7 +3,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
 class Weapon:
     """Represents a weapon, which can be used by a player in a fight"""
 

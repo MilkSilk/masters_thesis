@@ -53,14 +53,20 @@ class Player(Character):
         self.health = 150
         self.distance = 300  # To enemy hunter, in meters
         self.speed = 25
-        self.npc_enemy = None
+        self.target = None
+        self.npc_enemy: NpcEnemy = None
         logger.debug("New hunter called "+str(self)+" enters the bayou")
+
+    def add_target(self, target):
+        self.target = target
 
     def shoot(self):
         logger.debug(str(self)+" shoots their "+str(self.weapon))
         try:
             dmg_modifier = choice(self.damage_modifiers)
-            return self.weapon.deal_damage(self.distance) * dmg_modifier
+            damage_dealt = self.weapon.deal_damage(self.distance) * dmg_modifier
+            self.target.take_damage(damage_dealt)
+            return
         except NoAmmoException:
             logger.critical(str(self) + " shot their weapon ("
                             + str(self.weapon) + ") without any ammo!")
@@ -97,7 +103,8 @@ class Player(Character):
             return self.shoot()
         return
 
-    def add_npc(self, npc_enemy):
+    def add_npc(self):
+        npc_enemy = get_random_npc(self)
         logger.debug(str(self)+" has been added a new NPC enemy")
         self.npc_enemy = npc_enemy
 
@@ -119,7 +126,7 @@ class NpcEnemy(Character):
 
     def attack_hunter(self):
         logger.debug(str(self)+" attacks "+str(self.target))
-        self.target.take_damage()
+        self.target.take_damage(self.damage)
 
     def take_action(self):
         if self.distance == 0:
@@ -157,7 +164,7 @@ class Hellhound(NpcEnemy):
     """
 
     def __init__(self, target):
-        super().__init__()
+        super().__init__(target)
         self.name = "Hellhound"+str(randint(1, 1000))
         self.health = 80
         self.damage = 30
