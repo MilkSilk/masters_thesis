@@ -3,6 +3,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class Weapon:
     """Represents a weapon, which can be used by a player in a fight"""
 
@@ -31,7 +32,6 @@ class Weapon:
         self.ammo_stock -= ammo_available
 
     def deal_damage(self, distance):
-        logger.debug(str(self)+" fires losing 1 bullet from the chamber and dealing damage!")
         if self.ammo_loaded > 0:
             self.ammo_loaded -= 1
             if distance <= self.effective_range:
@@ -51,12 +51,13 @@ class NoAmmoException(Exception):
 
 
 def get_random_weapon():
-    logger.debug("Getting a random weapon")
     winfield = Weapon("Winfield  M1873 Talon", 110, 95, 150, 16, 20)
     romero = Weapon("Romero", 200, 15, 54, 1, 12)
     pax = Weapon("Caldwell Pax", 110, 86, 31, 6, 12)
     lebel = Weapon("Lebel 1886", 132, 250, 54, 10, 5)
     sparks = Weapon("Spark LRR", 149, 344, 54, 1, 16)
-    specter = Weapon("Specter 1882", 175, 10, 168, 5, 10)
+    specter = Weapon("Specter 1882 Bayonet", 175, 10, 168, 5, 10)
     available_weapons = [winfield, romero, pax, lebel, sparks, specter]
-    return choice(available_weapons)
+    chosen_weapon = choice(available_weapons)
+    logger.debug(f'Getting a random weapon: {chosen_weapon.name}')
+    return chosen_weapon

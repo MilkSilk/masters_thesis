@@ -1,5 +1,5 @@
 from random import randint, choice, getrandbits
-from skirmish_game_balance.src.environment.weapons import NoAmmoException
+from game_balance.src.environment.weapons import NoAmmoException
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,20 +12,21 @@ class Character:
         self.health = 100
         self.distance = 100
         self.speed = 25
+        self.target = None
 
     def __str__(self):
         return str(self.name)
 
     def take_damage(self, damage):
-        logger.debug(str(self)+" takes damage!")
+        logger.debug(str(self)+f' takes {str(damage)} damage!')
         self.health -= damage
         if self.health <= 0:
             logger.debug(str(self)+" dies!")
             return str(Character)+" has died."
 
     def approach_enemy(self):
-        logger.debug(str(self)+" approaches their enemy")
         self.distance -= min(self.distance, self.speed)
+        logger.debug(f'{self.name} approaches {self.target.name}, they are {self.distance}m away')
 
 
 class Player(Character):
@@ -96,16 +97,16 @@ class Player(Character):
         # If enemy is within effective range we shoot
         elif self.distance > 2*self.weapon.effective_range or \
                 (bool(getrandbits(1)) and self.distance > self.weapon.effective_range):
-            logger.debug(str(self)+" approaches the enemy")
             self.approach_enemy()
+            self.target.distance -= min(self.distance, self.speed)
         else:
-            logger.debug(str(self)+" shoots the enemy")
             return self.shoot()
         return
 
     def add_npc(self):
         npc_enemy = get_random_npc(self)
-        logger.debug(str(self)+" has been added a new NPC enemy")
+        logger.debug(str(self)+f' has been added a new NPC enemy {npc_enemy.name}, which is '
+                               f'{npc_enemy.distance}m away')
         self.npc_enemy = npc_enemy
 
 
@@ -122,7 +123,7 @@ class NpcEnemy(Character):
         self.damage = 20
         self.speed = 25  # Meters per round (round is ~ 5 sec, 25 is 5 sec times 5m/s, which is avg human run speed)
         self.target = target
-        self.distance = randint(50, 200)
+        self.distance = randint(10, 100)
 
     def attack_hunter(self):
         logger.debug(str(self)+" attacks "+str(self.target))
