@@ -51,11 +51,11 @@ class NoAmmoException(Exception):
 
 
 def get_random_weapon():
-    winfield = Weapon("Winfield  M1873 Talon", 110, 95, 150, 16, 20)
+    winfield = Weapon("Winfield M1873 Talon", 110, 95, 150, 16, 20)
     romero = Weapon("Romero", 200, 15, 54, 1, 12)
     pax = Weapon("Caldwell Pax", 110, 86, 31, 6, 12)
     lebel = Weapon("Lebel 1886", 132, 250, 54, 10, 5)
-    sparks = Weapon("Spark LRR", 149, 344, 54, 1, 16)
+    sparks = Weapon("Sparks LRR", 149, 344, 54, 1, 16)
     specter = Weapon("Specter 1882 Bayonet", 175, 10, 168, 5, 10)
     available_weapons = [winfield, romero, pax, lebel, sparks, specter]
     chosen_weapon = choice(available_weapons)

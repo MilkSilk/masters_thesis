@@ -46,13 +46,13 @@ class Player(Character):
 
     """
 
-    def __init__(self, name, weapon):
+    def __init__(self, name, weapon, distance=300):
         super().__init__()
         self.name = name
         self.weapon = weapon
-        self.damage_modifiers = [0.3, 0.7, 1, 2]  # leg, arm, body, head shots
+        self.distance = distance  # To enemy hunter, in meters
+        self.damage_modifiers = {"leg": 0.3, "arm": 0.7, "torso": 1, "head": 2}
         self.health = 150
-        self.distance = 300  # To enemy hunter, in meters
         self.speed = 25
         self.target = None
         self.npc_enemy: NpcEnemy = None
@@ -64,7 +64,9 @@ class Player(Character):
     def shoot(self):
         logger.debug(str(self)+" shoots their "+str(self.weapon))
         try:
-            dmg_modifier = choice(self.damage_modifiers)
+            dmg_modifier = choice([x for x in self.damage_modifiers.items()])
+            logger.debug(f'It\'s a shot to the {dmg_modifier[0]}')
+            dmg_modifier = dmg_modifier[1]
             damage_dealt = self.weapon.deal_damage(self.distance) * dmg_modifier
             self.target.take_damage(damage_dealt)
             return
@@ -91,7 +93,7 @@ class Player(Character):
         elif self.weapon.ammo_loaded == 0:
             logger.debug(str(self)+" reloads their weapon ("+str(self.weapon)+")")
             self.reload()
-        # If enemy is 2 effective ranges away we approach them
+        # If enemy is more than 2 effective ranges away we approach them
         # If enemy is between 2 effective ranges and 1 effective range we 50% shoot 50% approach
         # (bool(getrandbits(1)) is 50% True, 50% False
         # If enemy is within effective range we shoot
