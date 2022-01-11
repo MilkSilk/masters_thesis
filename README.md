@@ -6,6 +6,11 @@ Each project contains its own README.md, to learn about each project go to a pro
 
 Main thesis idea: Reinforcement learning is widely researched yet very little business applications exist. Various project presented in the thesis serve as a way of exploring the possiblities of well known ML algorithms with the idea of discovering new business applications for RL and whole of ML.
 
+Initial thesis title:
+Ogólny model sztucznej inteligencji na podstawie nieszablonowych zastosowań uczenia maszynowego
+Modeling artificial intelligence based upon unconventional machine learning applications
+
+
 ## Ideas for projects:
 
 - Solving monopoly with RL
