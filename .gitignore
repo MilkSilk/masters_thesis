@@ -5,3 +5,4 @@ lazygit.exe
 *.pyc
 game_data.csv
 *.log
+.ipynb_checkpoints
