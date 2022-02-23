@@ -48,4 +48,8 @@ defined.
 https://www.aaai.org/Papers/AIIDE/2006/AIIDE06-005.pdf
 http://www.cse.lehigh.edu/~munoz/Publications/IJCAI05W-proceedings.pdf#page=11
 https://www.scitepress.org/Papers/2019/73954/73954.pdf
+-https://link.springer.com/chapter/10.1007/978-3-319-52920-2_3
+-https://ieeexplore.ieee.org/abstract/document/5035625
+-https://www.aaai.org/Papers/Workshops/2007/WS-07-01/WS07-01-002.pdf
+
 
