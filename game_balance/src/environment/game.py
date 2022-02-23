@@ -1,7 +1,6 @@
 import logging
 from random import randint, seed
 from csv import writer
-from time import time
 from multiprocessing import Pool
 from game_balance.src.environment.characters import Player
 from game_balance.src.environment.weapons import get_random_weapon
@@ -54,7 +53,6 @@ def play_a_game(i):
         round_outcome = game.next_round()
         if round_outcome:
             winner = int(round_outcome[round_outcome.find(')') - 1]) - 1
-            # print(round_outcome)
             break
     if winner:
         winners_weapon = player1.weapon.name
@@ -68,16 +66,13 @@ def play_a_game(i):
 
 
 if __name__ == "__main__":
-    start_time = time()
     with open("../../game_data.csv", mode="w", newline='') as file:
         writer = writer(file)
         header = ["Id", "Weapon0", "Weapon1"]
         writer.writerow(header)
-        i = 0
         multip_pool = Pool()
-        result = multip_pool.map(play_a_game, range(100_000))  # sped up from 7.5 secs to 2.2 secs; instead of loop
+        result = multip_pool.map(play_a_game, range(10_000))  # sped up from 7.5 secs to 2.2 secs; instead of loop
         writer.writerows(result)
 
-    print(time()-start_time)
 
 
