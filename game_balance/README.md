@@ -36,9 +36,6 @@ based upon real weapon statistics for Hunt:Showdown, or can be user
 defined.
 
 ## TODO:
-- Implement the game itself
-    - Create environment: fight/duel system, outcome evaluation etc.
-    - Character/weapon objects which will be altered by AI for balance
 - Create AIs 
     - RL solution (duh!)
     - Analysing OLS parameters, and automating game changes based on 
