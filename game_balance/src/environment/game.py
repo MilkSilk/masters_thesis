@@ -3,7 +3,8 @@ from random import randint, seed
 from csv import writer
 from multiprocessing import Pool
 from game_balance.src.environment.characters import Player
-from game_balance.src.environment.weapons import get_random_weapon
+from game_balance.src.environment.weapons import get_random_weapon, define_weapons
+from functools import partial
 
 logging.basicConfig(filename='game.log', level=logging.DEBUG, filemode="w")
 logger = logging.getLogger(__name__)
@@ -43,10 +44,10 @@ class Game:
             self.player1.npc_enemy.take_action()
 
 
-def play_a_game(i):
+def play_a_game(i, available_weapons):
     hunter_distance = randint(25, 300)
-    player0 = Player("Dzejms", get_random_weapon(), hunter_distance)
-    player1 = Player("Emmmmmmmma", get_random_weapon(), hunter_distance)
+    player0 = Player("Dzejms", get_random_weapon(available_weapons), hunter_distance)
+    player1 = Player("Emmmmmmmma", get_random_weapon(available_weapons), hunter_distance)
     game = Game(player0, player1)
     logger.debug(f'Hunters are {hunter_distance}m away from each other')
     for j in range(1000):
@@ -70,8 +71,12 @@ if __name__ == "__main__":
         writer = writer(file)
         header = ["Id", "Weapon0", "Weapon1"]
         writer.writerow(header)
+
+        available_weapons = define_weapons()
+
         multip_pool = Pool()
-        result = multip_pool.map(play_a_game, range(10_000))  # sped up from 7.5 secs to 2.2 secs; instead of loop
+        result = multip_pool.map(partial(play_a_game, available_weapons=available_weapons), range(10_000))
+
         writer.writerows(result)
 
 
