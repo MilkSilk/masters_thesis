@@ -1,7 +1,9 @@
-from random import choice
+from random import choice, seed
 import logging
 
 logger = logging.getLogger(__name__)
+
+seed(8247)  # for reproducibility
 
 
 class Weapon:

@@ -1,8 +1,10 @@
-from random import randint, choice, getrandbits
+from random import randint, choice, getrandbits, seed
 from game_balance.src.environment.weapons import NoAmmoException
 import logging
 
 logger = logging.getLogger(__name__)
+
+seed(8247)  # for reproducibility
 
 
 class Character:

@@ -9,7 +9,7 @@ from functools import partial
 logging.basicConfig(filename='game.log', level=logging.DEBUG, filemode="w")
 logger = logging.getLogger(__name__)
 
-seed(8436)  # for replicability
+seed(8247)  # for reproducibility
 
 
 class Game:
