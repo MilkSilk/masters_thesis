@@ -8,6 +8,7 @@ import ray
 import tensorflow as tf
 from gym import Env
 from gym.spaces import Box
+from ray import tune
 from ray.rllib.agents.ppo import PPOTrainer
 
 from game_balance.src.environment.game import play_a_game
@@ -146,25 +147,42 @@ def check_environment():
 if __name__ == "__main__":
     how_many_gpus = len(tf.config.list_physical_devices('GPU'))
     ray.init(num_gpus=how_many_gpus)
-    trainer = PPOTrainer(
-        config={
-            # Env class to use (here: gym.Env sub-class from above).
-            "env": HuntEnv,
-            "rollout_fragment_length": 128,
-            "train_batch_size": 128,
-            "num_gpus": how_many_gpus,
-            "num_gpus_per_worker": how_many_gpus,
-            "framework": "tf",
-            # Parallelize environment rollouts.
-            "num_workers": 1,
-        })
 
-    for i in range(5):
+    config = {
+        # Env class to use (here: gym.Env sub-class from above).
+        "env": HuntEnv,
+        "rollout_fragment_length": 128,
+        "train_batch_size": 128,
+        "num_gpus": how_many_gpus,
+        "num_gpus_per_worker": how_many_gpus,
+        "framework": "tf",
+        "create_env_on_driver": True,
+        # Parallelize environment rollouts.
+        "num_workers": 1,
+    }
+    trainer = PPOTrainer(config=config, env=HuntEnv)
+
+    # stop = {
+    #     "training_iteration": 5,
+    #     "timesteps_total": 1_000,
+    #     "episode_reward_mean": 2.75,
+    # }
+    #
+    # print("Training policy until desired reward/timesteps/iterations. ...")
+    # results = tune.run(
+    #     "PPO",
+    #     config=config,
+    #     stop=stop,
+    #     verbose=2,
+    #     checkpoint_freq=1,
+    #     checkpoint_at_end=True,
+    # )
+
+
+    # trainer.load_checkpoint("C:/Users/Jacek/ray_results/PPOTrainer_HuntEnv_2022-03-16_21-20-42n5ue1jq4/checkpoint_000005/checkpoint-5")
+    for i in range(100):
         results = trainer.train()
+        trainer.save()
+        print(results)
         print(f"Iter: {i}; avg. reward={results['episode_reward_mean']}")
-
-
-
-
-
-
+    # trainer.evaluate()
