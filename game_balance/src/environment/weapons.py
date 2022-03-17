@@ -1,7 +1,7 @@
 from random import choice, seed
 import logging
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 seed(8247)  # for reproducibility
 
@@ -27,7 +27,7 @@ class Weapon:
         return str(self.name)
 
     def reload(self):
-        logger.debug(str(self)+" is being reloaded")
+        # logger.debug(str(self)+" is being reloaded")
         needed_ammo = self.max_ammo - self.ammo_loaded
         ammo_available = max(needed_ammo, self.ammo_stock)
         self.ammo_loaded += ammo_available
@@ -72,5 +72,5 @@ def get_random_weapon(available_weapons=None):
     if not available_weapons:
         available_weapons = define_weapons()
     chosen_weapon = choice(available_weapons)
-    logger.debug(f'Getting a random weapon: {chosen_weapon.name}')
+    # logger.debug(f'Getting a random weapon: {chosen_weapon.name}')
     return chosen_weapon

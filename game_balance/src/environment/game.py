@@ -7,7 +7,7 @@ from game_balance.src.environment.weapons import get_random_weapon, define_weapo
 from functools import partial
 
 logging.basicConfig(filename='game.log', level=logging.DEBUG, filemode="w")
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 seed(8247)  # for reproducibility
 
@@ -25,12 +25,12 @@ class Game:
     def next_round(self):
         self.player0.take_action()
         if self.player1.health <= 0:
-            logging.debug(str(self.player1) + " is dead!")
+            # logging.debug(str(self.player1) + " is dead!")
             return str(self.player0) + "(player 1) has killed " + str(self.player1)
 
         self.player1.take_action()
         if self.player0.health <= 0:
-            logger.debug(str(self.player0) + " is dead!")
+            # logger.debug(str(self.player0) + " is dead!")
             return str(self.player1) + "(player 2) has killed " + str(self.player0)
 
         if randint(1, 5) == 5 and not self.player0.npc_enemy:
@@ -49,7 +49,7 @@ def play_a_game(i, available_weapons):
     player0 = Player("Dzejms", get_random_weapon(available_weapons), hunter_distance)
     player1 = Player("Emmmmmmmma", get_random_weapon(available_weapons), hunter_distance)
     game = Game(player0, player1)
-    logger.debug(f'Hunters are {hunter_distance}m away from each other')
+    # logger.debug(f'Hunters are {hunter_distance}m away from each other')
     for j in range(1000):
         round_outcome = game.next_round()
         if round_outcome:

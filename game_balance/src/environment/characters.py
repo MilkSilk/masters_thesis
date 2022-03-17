@@ -2,7 +2,7 @@ from random import randint, choice, getrandbits, seed
 from game_balance.src.environment.weapons import NoAmmoException
 import logging
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 seed(8247)  # for reproducibility
 
@@ -20,15 +20,15 @@ class Character:
         return str(self.name)
 
     def take_damage(self, damage):
-        logger.debug(str(self)+f' takes {str(damage)} damage!')
+        # logger.debug(str(self)+f' takes {str(damage)} damage!')
         self.health -= damage
         if self.health <= 0:
-            logger.debug(str(self)+" dies!")
+            # logger.debug(str(self)+" dies!")
             return str(Character)+" has died."
 
     def approach_enemy(self):
         self.distance -= min(self.distance, self.speed)
-        logger.debug(f'{self.name} approaches {self.target.name}, they are {self.distance}m away')
+        # logger.debug(f'{self.name} approaches {self.target.name}, they are {self.distance}m away')
 
 
 class Player(Character):
@@ -58,42 +58,42 @@ class Player(Character):
         self.speed = 25
         self.target = None
         self.npc_enemy: NpcEnemy = None
-        logger.debug("New hunter called "+str(self)+" enters the bayou")
+        # logger.debug("New hunter called "+str(self)+" enters the bayou")
 
     def add_target(self, target):
         self.target = target
 
     def shoot(self):
-        logger.debug(str(self)+" shoots their "+str(self.weapon))
+        # logger.debug(str(self)+" shoots their "+str(self.weapon))
         try:
             dmg_modifier = choice([x for x in self.damage_modifiers.items()])
-            logger.debug(f'It\'s a shot to the {dmg_modifier[0]}')
+            # logger.debug(f'It\'s a shot to the {dmg_modifier[0]}')
             dmg_modifier = dmg_modifier[1]
             damage_dealt = self.weapon.deal_damage(self.distance) * dmg_modifier
             self.target.take_damage(damage_dealt)
             return
         except NoAmmoException:
-            logger.critical(str(self) + " shot their weapon ("
-                            + str(self.weapon) + ") without any ammo!")
+            # logger.critical(str(self) + " shot their weapon ("
+            #                 + str(self.weapon) + ") without any ammo!")
             return 0
 
     def reload(self):
-        logger.debug(str(self)+" reloaded their weapon")
+        # logger.debug(str(self)+" reloaded their weapon")
         self.weapon.reload()
 
     def fight_npc(self):
         if self.npc_enemy.take_damage(self.weapon.melee_dmg):
-            logger.debug(str(self)+" killed an NPC")
+            # logger.debug(str(self)+" killed an NPC")
             self.npc_enemy = None
 
     def take_action(self):
         # If enemy NPC is next to us we attack it
         if self.npc_enemy and self.npc_enemy.distance == 0:
-            logger.debug(str(self)+" attacks the enemy NPC")
+            # logger.debug(str(self)+" attacks the enemy NPC")
             self.fight_npc()
         # If we don't have ammo we reload
         elif self.weapon.ammo_loaded == 0:
-            logger.debug(str(self)+" reloads their weapon ("+str(self.weapon)+")")
+            # logger.debug(str(self)+" reloads their weapon ("+str(self.weapon)+")")
             self.reload()
         # If enemy is more than 2 effective ranges away we approach them
         # If enemy is between 2 effective ranges and 1 effective range we 50% shoot 50% approach
@@ -109,8 +109,8 @@ class Player(Character):
 
     def add_npc(self):
         npc_enemy = get_random_npc(self)
-        logger.debug(str(self)+f' has been added a new NPC enemy {npc_enemy.name}, which is '
-                               f'{npc_enemy.distance}m away')
+        # logger.debug(str(self)+f' has been added a new NPC enemy {npc_enemy.name}, which is '
+        #                        f'{npc_enemy.distance}m away')
         self.npc_enemy = npc_enemy
 
 
@@ -130,7 +130,7 @@ class NpcEnemy(Character):
         self.distance = randint(10, 100)
 
     def attack_hunter(self):
-        logger.debug(str(self)+" attacks "+str(self.target))
+        # logger.debug(str(self)+" attacks "+str(self.target))
         self.target.take_damage(self.damage)
 
     def take_action(self):
@@ -177,7 +177,7 @@ class Hellhound(NpcEnemy):
 
 
 def get_random_npc(target):
-    logger.debug("Getting a random NPC enemy")
+    # logger.debug("Getting a random NPC enemy")
     zombie = Zombie(target)
     armored = Armored(target)
     hellhound = Hellhound(target)
