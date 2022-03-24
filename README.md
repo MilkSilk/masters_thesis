@@ -16,12 +16,10 @@ Modeling artificial intelligence based upon unconventional machine learning appl
 - Solving monopoly with RL
 - Sorting an array with ML [ADA sort paper](https://www.researchgate.net/publication/305362015_AdaSort_Adaptive_Sorting_using_Machine_Learning), [So called "ML Sort"](https://arxiv.org/abs/1805.04272)
 - Generating human faces with OLS - [reddit inspiration](https://www.reddit.com/r/learnmachinelearning/comments/npojso/built_linear_regression_model_which_can_predict/?utm_medium=android_app&utm_source=share) and a [similar post](https://www.reddit.com/r/artificial/comments/ozsdju/generate_new_images_from_any_userbased_inputs_say/?utm_medium=android_app&utm_source=share)
-- Clustering with varied feature weights. Check if exists within unsipervised learning, implent both in unsupervised and in RL?
 - Solve "Upgraded tic-tac-toe": https://youtu.be/bxXH5Q4ZUAw
-- Do something similar to [Noncom exploit from 2b2t](https://github.com/nerdsinspace/nocom-explanation/blob/main/README.md)
 - Enriching datasets with handmade examples based on domain knowledge. It's a way of introducing a priori knowledge to models. For example if we know that low income means someone is less likely to have a good credit score we include observations that follow this. Or in RL if we're certain that for a certain state we want a given action we create a number of identical observations indicating that, similarly to bootstrapping with immitation learning
 - Problem: We have a stream of items, which are packaged into 10-item boxes. Each box has to be of certain weight at a minimum. We don't know all of the items in advance, we can stash up to 20 items aside to better bundle the items (disposing of items is possible). Aim: package up as many boxes as possible. Try to solve with RL?
-- Random neural networks for hashing/encrytpion?
+- Random neural networks for hashing/encrytpion? [paper doing this](https://www.researchgate.net/publication/310624366_Hash_function_generation_by_neural_network)
 
 ## Inspirations:
 https://bdtechtalks.com/2021/10/04/ea-reinforcement-learning-game-testing/
