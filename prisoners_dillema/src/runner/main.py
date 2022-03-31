@@ -3,9 +3,9 @@ import string
 import copy
 from statistics import mean, stdev
 
-from src.environment.environment import Environment
-from src.prisoner.prisoner import Prisoner
-from src.prisoner.learning_prisoner import LearningPrisoner
+from prisoners_dillema.src.environment.environment import Environment
+from prisoners_dillema.src.prisoner.prisoner import Prisoner
+from prisoners_dillema.src.prisoner.learning_prisoner import LearningPrisoner
 
 
 def predefined_prisoners():
@@ -39,7 +39,7 @@ def q_learning_experiment(n_prisoners=100, n_episodes=1000):
                 prisoner_pairs[j].append(prisoner)
                 available_prisoners.remove(prisoner)
             prison = Environment(prisoner_pairs[j][0], prisoner_pairs[j][1],
-                                 sentences=[[[4, 4], [2, 5]], [[5, 2], [3, 3]]])  # the usual times in prison all +5
+                                 sentences=[[[2, 2], [0, 3]], [[3, 0], [1, 1]]])  # the usual times in prison all +2
             prison.pass_sentences()
             prisoners.append(prisoner_pairs[j][0])
             prisoners.append(prisoner_pairs[j][1])
@@ -50,7 +50,7 @@ def q_learning_experiment(n_prisoners=100, n_episodes=1000):
 
 if __name__ == "__main__":
     # predefined_prisoners()
-    prisoners = q_learning_experiment(10, 10)
+    prisoners = q_learning_experiment(100, 10_000)
     q_tables = [prisoner.q_table for prisoner in prisoners]
     silence_q_values = [q[0] for q in q_tables]
     betrayal_q_values = [q[1] for q in q_tables]

@@ -55,7 +55,7 @@ class LearningPrisoner(Prisoner):
 
         # update based on the Bellman equation - Q[s,a] = Q[s,a] + alpha * [R(s,a) + gamma * maxQ'[s',a'] - Q(s,a)],
         # since we only have 1 action/state per episode, we omit the gamma * maxQ'[s',a'] term. We only have 1 state
-        # so we just plug in Q[a], R(a).
+        # so we just plug in Q(s, a), R(s, a).
         self.q_table[self.will_betray] = self.q_table[self.will_betray] + self.learning_rate \
             * (time_to_serve - self.q_table[self.will_betray])
         self.will_betray = None
