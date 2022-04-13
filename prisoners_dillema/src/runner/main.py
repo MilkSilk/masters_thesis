@@ -48,8 +48,7 @@ def q_learning_experiment(n_prisoners=100, n_episodes=1000):
     return prisoners
 
 
-if __name__ == "__main__":
-    # predefined_prisoners()
+def run_q_learning_experiment():
     prisoners = q_learning_experiment(100, 10_000)
     q_tables = [prisoner.q_table for prisoner in prisoners]
     silence_q_values = [q[0] for q in q_tables]
@@ -63,3 +62,7 @@ if __name__ == "__main__":
     print([prisoner.q_table for prisoner in prisoners])
     for prisoner in prisoners:
         print(prisoner)
+
+if __name__ == "__main__":
+    # predefined_prisoners()
+    run_q_learning_experiment()
