@@ -55,10 +55,10 @@ def play_a_game(i, available_weapons):
         if round_outcome:
             winner = int(round_outcome[round_outcome.find(')') - 1]) - 1
             break
-    if winner:
+    if winner: # if winner is player1, then winner === 1
         winners_weapon = player1.weapon.name
         losers_weapon = player0.weapon.name
-    else:
+    else: # if winner is player0 then winner === 0 and this goes into the else statement
         winners_weapon = player0.weapon.name
         losers_weapon = player1.weapon.name
 
