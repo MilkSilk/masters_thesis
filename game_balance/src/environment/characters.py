@@ -21,7 +21,7 @@ class Character:
 
     def take_damage(self, damage):
         # logger.debug(str(self)+f' takes {str(damage)} damage!')
-        self.health -= damage
+        self.health -= int(damage)
         if self.health <= 0:
             # logger.debug(str(self)+" dies!")
             return str(Character)+" has died."
