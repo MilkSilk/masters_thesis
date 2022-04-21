@@ -39,8 +39,8 @@ class Weapon:
             if distance <= self.effective_range:
                 return self.damage
             else:
-                return max(((-self.damage/(self.effective_range**2))*(distance**2) +
-                 2*self.damage/self.effective_range*distance), 0)
+                return max((-self.damage/(self.effective_range**2))*(distance**2) +
+                 2*self.damage/self.effective_range*distance, 0)
         else:
             raise NoAmmoException(message=self.name+" has no bullets in the chamber!")
 
