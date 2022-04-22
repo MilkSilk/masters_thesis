@@ -35,7 +35,6 @@ class HuntEnv(Env):
         self.steps_counter = 0
 
     def step(self, action):
-        self.steps_counter = self.steps_counter % 100
         self.steps_counter += 1
         # action is like: [-0.62, -0.64, -0.72, 0.53, -0.6, -0.38, 0.59, 0.21, -0.25, 0.04, -0.17, 0.69]
         # which translates to something like: [120, 12, 200, 15, 100, 80, 130, 200, 149, 300, 165, 10]
@@ -50,12 +49,13 @@ class HuntEnv(Env):
         self.state = state
         done = True
         info = {}
-        if reward > 2 or reward < 1 or self.steps_counter == 100:
+        if self.steps_counter == 100: 
             print(f"Current reward: {reward}")
             print(f"Winrates (state) presents itself as follows: {state}")
             for weapon in available_weapons:
                 print(f"Name: {weapon.name}, dmg: {weapon.damage}, range: {weapon.effective_range}")
             print("----------------------------------------------------------")
+            self.steps_counter = 0
 
         return self.state, reward, done, info
 
@@ -73,7 +73,7 @@ class HuntEnv(Env):
 
 
 def modify_weapons(weapons_stats, action):
-    # ("Winfield M1873 Talon", 110, 95, 150, 16, 20)
+    # example weapon_stats[0] input value: ("Winfield M1873 Talon", 110, 95, 150, 16, 20)
     modified_weapons = []
     for wep_id, weapon in enumerate(weapons_stats):
         new_dmg = action_to_value(action[wep_id*2], all_constraints[wep_id][1])
