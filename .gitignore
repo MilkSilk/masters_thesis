@@ -6,3 +6,15 @@ lazygit.exe
 game_data.csv
 *.log
 .ipynb_checkpoints
+kmeans_img_compression/images/2_doggo_raw.txt
+kmeans_img_compression/images/2_doggo.jpg
+kmeans_img_compression/images/5_doggo_raw.txt
+kmeans_img_compression/images/5_doggo.jpg
+kmeans_img_compression/images/10_doggo_raw.txt
+kmeans_img_compression/images/10_doggo.jpg
+kmeans_img_compression/images/20_doggo_raw.txt
+kmeans_img_compression/images/20_doggo.jpg
+kmeans_img_compression/images/50_doggo_raw.txt
+kmeans_img_compression/images/50_doggo.jpg
+kmeans_img_compression/images/100_doggo_raw.txt
+kmeans_img_compression/images/100_doggo.jpg
