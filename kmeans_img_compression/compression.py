@@ -4,10 +4,20 @@ from dahuffman import HuffmanCodec
 from dahuffman.huffmancodec import _EndOfFileSymbol
 import json
 
-im_source = "kmeans_img_compression/images/doggo.jpg"
+# im_name = "doggo" 
+# im_name = "wonderland"
+# im_name = "tapeta"
+im_name = "tennis"
+
+# source_im_format = "jpg"
+source_im_format = "png"
+
+im_source = f"kmeans_img_compression/images/{im_name}/{im_name}.{source_im_format}"
 
 def compress_image(im_source, k):
     im = Image.open(im_source)
+    im.save(f"kmeans_img_compression/images/{im_name}/{im_name}.jpg")
+
     pixels = []
     for col in range(im.width):
         for row in range(im.height):
@@ -38,18 +48,18 @@ def huffman_enocode(im_data):
     return encoded_im, codec
 
 def save_compressed_im(raw_im_data, n_colors):
-    with open(f"kmeans_img_compression/images/{n_colors}_doggo_raw.txt", mode="w") as doggo_im_raw:
-        doggo_im_raw.write(str(raw_im_data[0])+"\n")
+    with open(f"kmeans_img_compression/images/{im_name}/{n_colors}_{im_name}_raw.txt", mode="w") as image_writer:
+        image_writer.write(str(raw_im_data[0])+"\n")
         
-        doggo_im_raw.writelines('\t'.join(str(j) for j in i) + '\n' for i in raw_im_data[1:])
+        image_writer.writelines('\t'.join(str(j) for j in i) + '\n' for i in raw_im_data[1:])
 
-    with open(f"kmeans_img_compression/images/{n_colors}_huffman_doggo_raw.txt", mode="wb") as doggo_im_raw:
+    with open(f"kmeans_img_compression/images/{im_name}/{n_colors}_huffman_{im_name}_raw.txt", mode="wb") as image_writer:
         # Saves both pixel values (centroids) and pixels huffman encoded to a file
         encoded_im, codec = huffman_enocode(raw_im_data)
 
-        codec.save(f"kmeans_img_compression/images/{n_colors}_huffman_doggo_raw.pickle")
+        codec.save(f"kmeans_img_compression/images/{im_name}/{n_colors}_huffman_{im_name}_raw.pickle")
 
-        doggo_im_raw.write(encoded_im)
+        image_writer.write(encoded_im)
 
 color_nums = [2, 5, 10, 20, 50, 100]
 
@@ -59,5 +69,4 @@ for color_num in color_nums:
     new_image, raw_image = compress_image(im_source, color_num)
     save_compressed_im(raw_image, color_num)
 
-    new_image.save(f"kmeans_img_compression/images/{color_num}_doggo.jpg")
-
+    new_image.save(f"kmeans_img_compression/images/{im_name}/{color_num}_{im_name}.{source_im_format}")
