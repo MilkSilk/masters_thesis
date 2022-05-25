@@ -2,6 +2,7 @@ import logging
 from functools import partial
 from multiprocessing import Pool
 
+
 import numpy as np
 import pandas as pd
 import ray
@@ -180,7 +181,7 @@ if __name__ == "__main__":
 
 
     # trainer.load_checkpoint("C:/Users/Jacek/ray_results/PPOTrainer_HuntEnv_2022-03-16_21-20-42n5ue1jq4/checkpoint_000005/checkpoint-5")
-    for i in range(100):
+    for i in range(1000):
         results = trainer.train()
         trainer.save()
         print(results)
