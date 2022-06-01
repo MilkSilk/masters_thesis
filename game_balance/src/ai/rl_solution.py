@@ -9,7 +9,6 @@ import ray
 import tensorflow as tf
 from gym import Env
 from gym.spaces import Box
-from ray import tune
 from ray.rllib.agents.ppo import PPOTrainer
 
 from game_balance.src.environment.game import play_a_game
